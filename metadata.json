@@ -1,0 +1,5 @@
+{
+  "name": "PMCK AI Doctor Assistant",
+  "description": "An AI-powered assistant to help with writing health articles. It verifies doctor quotes, suggests specialists for various conditions, provides daily health tips, and answers medical questions, ensuring all information is attributed to a curated list of PMCK doctors.",
+  "requestFramePermissions": []
+}
