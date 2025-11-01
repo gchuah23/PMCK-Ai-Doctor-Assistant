@@ -1,6 +1,6 @@
+
 import React from 'react';
 import { Doctor } from '../types';
-import ReactMarkdown from 'https://esm.sh/react-markdown@9';
 
 interface DoctorCardProps {
   doctor: Doctor;
@@ -8,12 +8,21 @@ interface DoctorCardProps {
 
 const DoctorCard: React.FC<DoctorCardProps> = ({ doctor }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg border border-slate-200/80 overflow-hidden transition-shadow duration-300 ease-in-out flex flex-col">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out flex flex-col">
+      <img className="w-full h-40 object-cover" src={doctor.imageUrl} alt={`Portrait of ${doctor.name}`} />
       <div className="p-4 flex flex-col flex-grow">
-        <h3 className="text-md font-bold text-slate-800">{doctor.name}</h3>
-        <p className="text-sm font-medium text-cyan-600 mb-2">{doctor.specialty}</p>
-        <div className="mt-2 text-xs text-slate-600 flex-grow prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-li:my-0.5">
-          <ReactMarkdown>{doctor.bio}</ReactMarkdown>
+        <h3 className="text-lg font-semibold text-slate-800">{doctor.name}</h3>
+        <p className="text-sm font-medium text-cyan-600">{doctor.specialty}</p>
+        <p className="mt-2 text-sm text-slate-600 flex-grow">{doctor.bio}</p>
+        <div className="mt-4">
+            <a 
+                href={doctor.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center bg-cyan-50 text-cyan-700 font-semibold py-2 px-4 rounded-md text-sm hover:bg-cyan-100 transition-colors"
+            >
+                View Full Profile
+            </a>
         </div>
       </div>
     </div>
