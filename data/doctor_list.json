@@ -1,0 +1,74 @@
+[
+  {
+    "id": "a-mahdevan",
+    "name": "Dr. A. Mahdevan",
+    "specialty": "Consultant Physician & Cardiologist",
+    "bio": "Graduated from University of Malaya in 1980. He served as Medical Officer in various hospitals in Malaysia before specializing in internal medicine in the United Kingdom, obtaining his MRCP (UK) in 1985. He has a special interest in Interventional Cardiology.",
+    "imageUrl": "https://pmck.com.my/wp-content/uploads/2022/10/Dr-A-Mahadevan-2-scaled.jpg",
+    "profileUrl": "https://pmck.com.my/doctors/dr-a-mahdevan/"
+  },
+  {
+    "id": "annamalar-muthu",
+    "name": "Dr. Annamalar Muthu",
+    "specialty": "Consultant Obstetrician & Gynaecologist",
+    "bio": "Graduated from the University of Malaya in 1981 and obtained her post‑graduate degree, MRCOG from the Royal College of Obstetricians & Gynaecologists, London in 1987. She is also a Fellow of the Royal College (FRCOG).",
+    "imageUrl": "https://pmck.com.my/wp-content/uploads/2022/10/Dr-Annamalar-Muthu-scaled.jpg",
+    "profileUrl": "https://pmck.com.my/doctors/dr-annamalar-muthu/"
+  },
+  {
+    "id": "balasundram",
+    "name": "Dr. Balasundram",
+    "specialty": "Consultant Physician & Nephrologist",
+    "bio": "Obtained his primary degree, MBBS from the University of Mysore, India in 1981. He served the Ministry of Health, Malaysia in various capacities since 1983. He obtained his MRCP (UK) in 1991 and has a special interest in Nephrology.",
+    "imageUrl": "https://pmck.com.my/wp-content/uploads/2022/10/Dr-S-Balasundram-scaled.jpg",
+    "profileUrl": "https://pmck.com.my/doctors/dr-balasundram/"
+  },
+  {
+    "id": "boey-sou-keng",
+    "name": "Dr. Boey Sou Keng",
+    "specialty": "Consultant Paediatrician",
+    "bio": "Dr. Boey Sou Keng is a Consultant Paediatrician. She graduated from the University of Malaya in 1990 and obtained her post‑graduate degree, M. Med (Paeds) from the Universiti Sains Malaysia (USM) in 1997.",
+    "imageUrl": "https://pmck.com.my/wp-content/uploads/2022/10/Dr-Boey-Sou-Keng-scaled.jpg",
+    "profileUrl": "https://pmck.com.my/doctors/dr-boey-sou-keng/"
+  },
+  {
+    "id": "chiam-kok-peng",
+    "name": "Dr. Chiam Kok Peng",
+    "specialty": "Consultant Orthopaedic Surgeon",
+    "bio": "Dr Chiam Kok Peng is a Consultant Orthopaedic Surgeon. He graduated from University of Malaya in 1998 and obtained his post‑graduate degree, M.S. ORTHO (UM) from the University of Malaya in 2006.",
+    "imageUrl": "https://pmck.com.my/wp-content/uploads/2022/10/Dr-Chiam-Kok-Peng-scaled.jpg",
+    "profileUrl": "https://pmck.com.my/doctors/dr-chiam-kok-peng/"
+  },
+  {
+    "id": "dev-anand",
+    "name": "Dr. Dev Anand",
+    "specialty": "Consultant General, Upper GI & Bariatric Surgeon",
+    "bio": "Dr Dev Anand is a General, Upper GI & Bariatric Surgeon. He graduated from University Putra Malaysia (UPM) in 2002 and obtained his post‑graduate degree, M.S. (General Surgery) from University of Malaya in 2010.",
+    "imageUrl": "https://pmck.com.my/wp-content/uploads/2022/10/Dr-Dev-Anand-scaled.jpg",
+    "profileUrl": "https://pmck.com.my/doctors/dr-dev-anand-2/"
+  },
+  {
+    "id": "chan-chong-guan",
+    "name": "Dr. Chan Chong Guan",
+    "specialty": "Consultant ENT, Head & Neck Surgeon",
+    "bio": "Dr Chan Chong Guan is a Consultant ENT, Head & Neck Surgeon. He graduated from University of Malaya in 1998 and obtained his post‑graduate degree, M.S. (ORL‑HNS) from the University of Malaya in 2006.",
+    "imageUrl": "https://pmck.com.my/wp-content/uploads/2022/10/Dr-Chan-Chong-Guan-scaled.jpg",
+    "profileUrl": "https://pmck.com.my/doctors/dr-chan-chong-guan/"
+  },
+  {
+    "id": "g-kunalan",
+    "name": "Dr. G. Kunalan",
+    "specialty": "Consultant Ophthalmologist (Eye Surgeon)",
+    "bio": "Dr G. Kunalan is a Consultant Ophthalmologist. He graduated from University of Malaya in 1997 and obtained his post‑graduate degree, M.S. (Ophthalmology) from the University of Malaya in 2004.",
+    "imageUrl": "https://pmck.com.my/wp-content/uploads/2022/10/Dr-G-Kunalan-scaled.jpg",
+    "profileUrl": "https://pmck.com.my/doctors/dr-g-kunalan/"
+  },
+  {
+    "id": "leong-kin-wah",
+    "name": "Dr. Leong Kin Wah",
+    "specialty": "Consultant Urologist",
+    "bio": "Dr Leong Kin Wah is a Consultant Urologist. He graduated from University of Malaya in 1995 and obtained his post‑graduate degree, M.S. (General Surgery) from the University of Malaya in 2002.",
+    "imageUrl": "https://pmck.com.my/wp-content/uploads/2022/10/Dr-Leong-Kin-Wah-scaled.jpg",
+    "profileUrl": "https://pmck.com.my/doctors/dr-leong-kin-wah/"
+  }
+]
