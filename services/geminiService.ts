@@ -1,5 +1,4 @@
 import { GoogleGenAI } from "@google/genai";
-import { AppMode } from '../types';
 import { PMCK_DOCTORS } from '../constants';
 
 const API_KEY = process.env.API_KEY;
@@ -10,73 +9,55 @@ if (!API_KEY) {
 
 const ai = new GoogleGenAI({ apiKey: API_KEY });
 
-const model = ai.models;
-
 const generateSystemInstruction = (): string => {
-  const doctorProfiles = PMCK_DOCTORS.map(doc => 
-    `- Dr. ${doc.name}, Specialty: ${doc.specialty}. Bio: ${doc.bio}`
-  ).join('\n');
+  const doctorProfiles = PMCK_DOCTORS.map(doc =>
+    `---
+**ID:** ${doc.id}
+**Name:** ${doc.name}
+**Specialty:** ${doc.specialty}
+**Profile:**
+${doc.bio}
+---`
+  ).join('\n\n');
 
-  return `You are a highly knowledgeable and helpful AI assistant for the PMCK Medical Center. Your primary role is to assist a health article writer.
-  
+  return `You are a highly knowledgeable and helpful AI assistant for the PMCK Medical Center. Your primary role is to assist a health article writer by leveraging an internal database of PMCK specialists.
+
   **CRITICAL RULES:**
   1.  **Absolute Source Constraint:** Your ONLY source of information is the provided list of PMCK doctors below. You MUST base all your answers, suggestions, and information strictly on this list.
   2.  **No External Information:** Do NOT invent doctors, use external medical sources, or mention specialists not on this list. Under no circumstances should you mention a doctor not present in this list. If a suitable doctor for a query cannot be found, state that clearly and suggest a specialty that might be relevant.
-  3.  **Adopt a Persona:** When answering a question or providing a tip, you MUST adopt the persona of the most relevant doctor from the list. Start your response by identifying the doctor, for example: "As Dr. A. Mahdevan, a cardiologist at PMCK, I would advise...".
-  4.  **Clarity and Safety:** Keep your language clear, concise, and easy to understand for a general audience. Always include the mandatory disclaimer at the end of your response.
-  5.  **Formatting:** Use markdown for better readability (e.g., bolding, bullet points).
+  3.  **Adopt a Persona (When Answering Questions):** When answering a direct medical question, you MUST adopt the persona of the most relevant doctor from the list. Start your response by identifying the doctor, for example: "As Dr. [Doctor's Name], a [Specialty] at PMCK, I would advise...".
+  4.  **Be Direct (For Other Queries):** When finding a doctor or verifying a snippet, be direct. For example: "For [condition], the most relevant specialist at PMCK is Dr. [Doctor's Name], a [Specialty]."
+  5.  **Analyze User Intent:** The user will provide a single query. You must determine their intent:
+      *   **Is it a medical question?** (e.g., "what are the symptoms of...") -> Adopt a persona and answer.
+      *   **Is it a request to find a doctor?** (e.g., "who treats...") -> Identify the best specialist.
+      *   **Is it an article verification?** (e.g., "Dr. X said...") -> Verify the quote against the doctor's specialty.
+      *   **Is it a request for a health tip?** (e.g., "give me a health tip") -> Provide a tip from a relevant doctor's perspective.
+  6.  **Clarity and Safety:** Keep your language clear and professional. Always include the mandatory disclaimer at the end of every response.
+  7.  **Formatting:** Use markdown for better readability (e.g., bolding, bullet points).
 
   **List of PMCK Doctors (Your ONLY Source of Truth):**
   ${doctorProfiles}
   `;
 };
 
-const generatePrompt = (mode: AppMode, input: string): string => {
-  switch (mode) {
-    case AppMode.ASK_QUESTION:
-      return `
-        A user has a question for the "Ask The Doctor" series. Based on the provided doctor list, identify the most suitable specialist and answer the following question from their perspective.
-        Question: "${input}"
-      `;
-    case AppMode.VERIFY_ARTICLE:
-      return `
-        A writer has submitted an article snippet and wants to verify the quoted doctor. Analyze the snippet, identify the medical topic, and determine if the quoted doctor is the correct specialist from the PMCK list.
-        - If correct, confirm it and briefly explain why their specialty is relevant.
-        - If incorrect, gently correct it by suggesting the most appropriate PMCK doctor and explain the reasoning.
-        Article Snippet: "${input}"
-      `;
-    case AppMode.FIND_DOCTOR:
-      return `
-        A user is asking for a doctor recommendation based on a health condition. Identify the best PMCK specialist for the following issue and explain why they are a good fit.
-        Condition: "${input}"
-      `;
-    case AppMode.HEALTH_TIP:
-      return `
-        Generate a single, concise, and actionable "Health Tip of the Day". Attribute it to one of the PMCK doctors from the list, ensuring their specialty is relevant to the tip.
-      `;
-    default:
-      return input;
-  }
-}
-
-export const runQuery = async (mode: AppMode, input: string): Promise<string> => {
+export const runQuery = async (input: string): Promise<string> => {
   try {
     const systemInstruction = generateSystemInstruction();
-    const userPrompt = generatePrompt(mode, input);
 
-    const response = await model.generateContent({
+    // FIX: Call ai.models.generateContent directly to align with Gemini API guidelines.
+    const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
-      contents: userPrompt,
+      contents: input,
       config: {
         systemInstruction: systemInstruction,
         temperature: 0.7,
         topP: 0.95,
       }
     });
-    
+
     const text = response.text.trim();
     const disclaimer = "\n\n---\n*Disclaimer: This information is for article writing assistance and general knowledge only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.*";
-    
+
     return text + disclaimer;
 
   } catch (error) {

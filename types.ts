@@ -1,18 +1,8 @@
-
-export enum AppMode {
-  ASK_QUESTION = 'Ask a Question',
-  VERIFY_ARTICLE = 'Verify Article Snippet',
-  FIND_DOCTOR = 'Find a Doctor',
-  HEALTH_TIP = 'Health Tip of the Day',
-}
-
 export interface Doctor {
   id: number;
   name: string;
   specialty: string;
   bio: string;
-  imageUrl: string;
-  profileUrl: string;
 }
 
 export enum MessageSender {
@@ -23,4 +13,12 @@ export enum MessageSender {
 export interface ChatMessage {
   sender: MessageSender;
   text: string;
+}
+
+// FIX: Add AppMode enum as it is used in WelcomeScreen.tsx and was missing.
+export enum AppMode {
+  ASK_QUESTION = 'ASK_QUESTION',
+  VERIFY_ARTICLE = 'VERIFY_ARTICLE',
+  FIND_DOCTOR = 'FIND_DOCTOR',
+  HEALTH_TIP = 'HEALTH_TIP',
 }
