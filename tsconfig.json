@@ -23,6 +23,10 @@
         "./*"
       ]
     },
+  // Allow importing JSON files directly in TypeScript.
+  "resolveJsonModule": true,
+  // Enable synthetic default imports which helps when importing CommonJS modules.
+  "esModuleInterop": true,
     "allowImportingTsExtensions": true,
     "noEmit": true
   }
